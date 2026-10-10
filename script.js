@@ -3,6 +3,7 @@
   const cfg = window.PUZZLES_CONFIG || {};
   const params = new URLSearchParams(window.location.search);
   const variant = document.body.dataset.variant || "unknown";
+  const experiment = "laas_three_way_v1";
 
   function withParams(rawUrl) {
     if (!rawUrl) return "#";
@@ -11,6 +12,7 @@
       for (const [key, value] of params.entries()) {
         if (!url.searchParams.has(key)) url.searchParams.set(key, value);
       }
+      url.searchParams.set("experiment", experiment);
       url.searchParams.set("landing_variant", variant);
       return url.toString();
     } catch {
