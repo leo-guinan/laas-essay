@@ -20,7 +20,10 @@
 
   document.querySelectorAll("[data-booking-link]").forEach((el) => {
     el.href = withParams(cfg.bookingUrl);
-    el.addEventListener("click", () => track("booking_click"));
+    el.addEventListener("click", () => {
+      track("booking_click");
+      window.fathom?.trackEvent("Calibration CTA Clicked");
+    });
   });
 
   const frame = document.querySelector("[data-vsl-frame]");
